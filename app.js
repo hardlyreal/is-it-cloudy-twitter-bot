@@ -37,9 +37,8 @@ http.get(url, res => {
     else {
      weatherTweet = `No... it's ${body.current_observation.weather.toLowerCase()}`;
    }
-
     // Tweet every 4 hours
-    tweetIt(weatherTweet);
+    setInterval(()=> tweetIt(weatherTweet), 1000*20);
   });
 });
 
