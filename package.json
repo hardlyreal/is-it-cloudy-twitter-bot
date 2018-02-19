@@ -1,0 +1,16 @@
+{
+  "name": "twitterbot",
+  "version": "1.0.0",
+  "description": "A twitter bot",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ryan Walker",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.83.0",
+    "twit": "^2.2.9"
+  }
+}
