@@ -1,10 +1,7 @@
 require('dotenv').config();
 const Twit = require('twit');
-const config = require('./config');
 const http = require('http');
 
-// url
-// const url = 'http://api.wunderground.com/api/be341b0e84b47af5/conditions/q/OH/Youngstown.json';
 const url = process.env.WEATHER_URL;
 
 http.get(url, res => {
@@ -42,13 +39,19 @@ http.get(url, res => {
       weatherTweet = `No... it's ${body.current_observation.weather.toLowerCase()}`;
     }
     // Tweet every 4 hours
-    setInterval(() => tweetIt(weatherTweet), 1000 * 20);
+    setInterval(() => tweetIt(weatherTweet), 1000 * 240);
+    // tweetIt(weatherTweet);
   });
 });
 
 // TWITTER FUNCTION
 // Authenticate
-const T = new Twit(config);
+const T = new Twit({
+  consumer_key: process.env.CONSUMER_KEY,
+  consumer_secret: process.env.CONSUMER_SECRET,
+  access_token: process.env.ACCESS_TOKEN,
+  access_token_secret: process.env.ACCESS_TOKEN_SECRET
+});
 
 // POST REQUEST
 function tweetIt(txt) {
